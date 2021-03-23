@@ -36,8 +36,9 @@ function Header() {
       const {data} = await client.query({
         query: gql`
           query GetBooks {
-            books{
-              title
+            profits{
+              companyName,
+              profit
             }
           }
         `

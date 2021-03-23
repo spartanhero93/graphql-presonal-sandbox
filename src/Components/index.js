@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -7,9 +7,18 @@ const Container = styled.div`
 `
 
 function SideBar() {
+  const [channels, handleChannels] = useState({})
+
+  
+
   return(
     <Container>
+      <div className='followed'>
 
+      </div>
+      <div className='recommended'>
+
+      </div>
     </Container>
   )
 }
