@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-//import axios from 'axios'
+import axios from 'axios'
 import styled from "styled-components";
 import { gql } from '@apollo/client';
 
@@ -30,7 +30,6 @@ const HeaderItem = styled.div`
 `;
 
 function Header() {
-  
   async function getData() {
     try {
       const {data} = await client.query({
@@ -49,12 +48,26 @@ function Header() {
     }
   }
 
+  async function sampleData(keyword) {
+    try {
+      const {data} = await axios.get(`https://kitsu.io/api/edge/${keyword}`, {
+        headers: {
+          'Accept': 'application/vnd.api+json',
+          'Content-Type': 'application/vnd.api+json'
+        }
+      })
+      console.log(data)
+    } catch (error) {
+     console.error(error) 
+    }
+  }
+
 
   return (
     <Container>
       <div>
         <HeaderItem onClick={() => getData()}>Discover</HeaderItem>
-        <HeaderItem>Browse</HeaderItem>
+        <HeaderItem onClick={() => sampleData('trending/anime')}>Trending</HeaderItem>
         <HeaderItem>...</HeaderItem>
       </div>
 
